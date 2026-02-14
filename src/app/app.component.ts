@@ -18,9 +18,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if we need to show setup page
-    const isConnected = sessionStorage.getItem('azureAppConfigConnected');
-    
-    if (!this.azureConfigService.isInitialized() && !isConnected) {
+    // Redirect to setup if service is not initialized
+    if (!this.azureConfigService.isInitialized()) {
       this.router.navigate(['/setup']);
     }
   }

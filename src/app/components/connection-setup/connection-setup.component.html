@@ -51,7 +51,7 @@
 
       <div class="warning-box">
         <strong>⚠️ Security Note:</strong> Connection strings are stored only in memory for this session. 
-        They are not persisted to disk or browser storage for security reasons.
+        A session flag is stored in sessionStorage to track connection status, but the actual connection string is never persisted.
       </div>
     </div>
   </div>

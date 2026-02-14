@@ -33,7 +33,7 @@ This project is an Angular 19 application that provides a user-friendly interfac
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/PhatRodney/AppConfig.git
+git clone <repository-url>
 cd AppConfig
 ```
 
