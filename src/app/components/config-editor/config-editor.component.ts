@@ -39,7 +39,8 @@ export class ConfigEditorComponent implements OnInit {
       this.isEditMode = true;
       this.configKey = key;
       const label = this.route.snapshot.queryParamMap.get('label');
-      this.loadConfiguration(key, label || undefined);
+      // Pass label as-is (including empty string) or undefined if not present
+      this.loadConfiguration(key, label !== null ? label : undefined);
     } else {
       this.isEditMode = false;
     }
