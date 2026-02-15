@@ -45,7 +45,15 @@ export class ConfigListComponent implements OnInit {
   }
 
   viewConfig(config: ConfigItem): void {
+    const queryParams: Record<string, string> = {};
+    // Only add label to query params if it exists (including empty string)
+    // Don't add it if undefined to distinguish between "no label" and "empty label"
+    if (config.label !== undefined) {
+      queryParams['label'] = config.label;
+    }
+    
     this.router.navigate(['/edit', config.key], { 
+      queryParams,
       state: { config } 
     });
   }

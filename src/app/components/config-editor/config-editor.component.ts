@@ -38,17 +38,19 @@ export class ConfigEditorComponent implements OnInit {
     if (key) {
       this.isEditMode = true;
       this.configKey = key;
-      this.loadConfiguration(key);
+      const label = this.route.snapshot.queryParamMap.get('label');
+      // Pass label as-is (including empty string) or undefined if not present
+      this.loadConfiguration(key, label !== null ? label : undefined);
     } else {
       this.isEditMode = false;
     }
   }
 
-  loadConfiguration(key: string): void {
+  loadConfiguration(key: string, label?: string): void {
     this.loading = true;
     this.error = null;
 
-    this.azureConfigService.getConfiguration(key).subscribe({
+    this.azureConfigService.getConfiguration(key, label).subscribe({
       next: (config) => {
         if (config) {
           this.originalConfig = config;
